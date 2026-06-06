@@ -3,262 +3,495 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RENOBEST 提案 2026/6月</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@400;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>RENOBEST — 提案資料一覧</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --N:#1D2A44;
   --G:#C19F6E;
   --CR:#F8F5EF;
-  --BG:#d8d3c8;
+  --BG:#EDEBE5;
+  --border:#e8e3d8;
+  --muted:#888;
 }
-
 body{
   font-family:'Noto Sans JP',sans-serif;
   background:var(--BG);
   min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:40px 16px 60px;
+  color:#333;
 }
 
-/* ヘッダー */
-.header{
-  width:100%;
-  max-width:600px;
-  text-align:center;
-  margin-bottom:32px;
+/* ── HEADER ── */
+header{
+  background:var(--N);
+  padding:0 40px;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow:0 2px 20px rgba(0,0,0,.3);
 }
-.header-brand{
-  font-family:'DM Mono',monospace;
-  font-size:13px;
-  font-weight:500;
-  letter-spacing:.25em;
+.logo{
+  font-family:'Shippori Mincho',serif;
+  font-size:18pt;
   color:var(--G);
+  letter-spacing:.2em;
+  font-weight:700;
+  line-height:1;
+}
+.logo-sub{
+  font-size:8pt;
+  color:rgba(255,255,255,.45);
+  letter-spacing:.1em;
+  font-family:'Noto Sans JP',sans-serif;
+  font-weight:400;
+  margin-top:3px;
+}
+.header-badge{
+  background:rgba(193,159,110,.15);
+  border:1px solid rgba(193,159,110,.3);
+  color:var(--G);
+  padding:5px 14px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+/* ── HERO STRIP ── */
+.hero{
+  background:linear-gradient(135deg, #1D2A44 0%, #2a3d5e 60%, #1a3048 100%);
+  padding:48px 40px 40px;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;
+  top:-40px; right:-60px;
+  width:300px; height:300px;
+  border-radius:50%;
+  background:rgba(193,159,110,.08);
+}
+.hero::after{
+  content:'';
+  position:absolute;
+  bottom:-80px; left:30%;
+  width:200px; height:200px;
+  border-radius:50%;
+  background:rgba(193,159,110,.05);
+}
+.hero-content{position:relative;z-index:1;}
+.hero-label{
+  font-size:8pt;
+  color:var(--G);
+  font-weight:900;
+  letter-spacing:.2em;
   text-transform:uppercase;
   margin-bottom:10px;
 }
-.header-title{
+.hero-title{
   font-family:'Shippori Mincho',serif;
-  font-size:22px;
+  font-size:22pt;
+  color:#fff;
   font-weight:700;
-  color:var(--N);
-  margin-bottom:6px;
+  line-height:1.3;
+  margin-bottom:8px;
 }
-.header-sub{
-  font-size:12px;
-  color:#888;
-  letter-spacing:.05em;
+.hero-desc{
+  font-size:9pt;
+  color:rgba(255,255,255,.55);
+  line-height:1.7;
 }
-.divider{
-  width:48px;
-  height:2px;
-  background:var(--G);
-  margin:16px auto 0;
-  border-radius:1px;
+.hero-stats{
+  display:flex;
+  gap:32px;
+  margin-top:28px;
 }
-
-/* カード */
-.card-list{
-  width:100%;
-  max-width:600px;
+.h-stat{
   display:flex;
   flex-direction:column;
-  gap:12px;
+  gap:3px;
+}
+.h-stat-val{
+  font-family:'DM Mono',monospace;
+  font-size:24pt;
+  color:var(--G);
+  font-weight:500;
+  line-height:1;
+}
+.h-stat-lbl{
+  font-size:7.5pt;
+  color:rgba(255,255,255,.4);
+  letter-spacing:.06em;
 }
 
-.card{
+/* ── MAIN ── */
+main{
+  max-width:1080px;
+  margin:0 auto;
+  padding:40px 24px 60px;
+}
+
+.section-header{
   display:flex;
-  align-items:center;
-  background:#fff;
-  border-radius:10px;
-  box-shadow:0 2px 12px rgba(29,42,68,.10);
-  padding:16px 20px;
-  text-decoration:none;
+  align-items:baseline;
+  gap:12px;
+  margin-bottom:20px;
+}
+.section-title{
+  font-family:'Shippori Mincho',serif;
+  font-size:14pt;
   color:var(--N);
-  transition:transform .15s, box-shadow .15s;
-  border-left:4px solid var(--G);
-  gap:16px;
+  font-weight:700;
+}
+.section-line{
+  flex:1;
+  height:1px;
+  background:var(--border);
+}
+.section-count{
+  font-size:8pt;
+  color:var(--muted);
+  font-family:'DM Mono',monospace;
+}
+
+/* ── GRID ── */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));
+  gap:18px;
+}
+
+/* ── CARD ── */
+.card{
+  background:#fff;
+  border-radius:12px;
+  border:1px solid var(--border);
+  overflow:hidden;
+  transition:transform .2s ease, box-shadow .2s ease;
+  text-decoration:none;
+  display:block;
+  position:relative;
 }
 .card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 6px 20px rgba(29,42,68,.16);
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(29,42,68,.12);
 }
-.card-num{
-  font-family:'DM Mono',monospace;
-  font-size:18px;
-  font-weight:500;
-  color:var(--G);
-  flex-shrink:0;
-  min-width:28px;
+.card-accent{
+  height:4px;
+  background:linear-gradient(90deg, var(--G), #d4af7a);
 }
 .card-body{
-  flex:1;
+  padding:20px 22px 18px;
+}
+.card-badge{
+  display:inline-block;
+  background:var(--CR);
+  border:1px solid var(--border);
+  color:var(--G);
+  font-size:7.5pt;
+  font-weight:700;
+  padding:3px 10px;
+  border-radius:4px;
+  letter-spacing:.06em;
+  margin-bottom:10px;
 }
 .card-name{
   font-family:'Shippori Mincho',serif;
-  font-size:15px;
-  font-weight:700;
+  font-size:13pt;
   color:var(--N);
-  margin-bottom:3px;
+  font-weight:700;
+  line-height:1.35;
+  margin-bottom:6px;
 }
-.card-detail{
+.card-name-en{
+  font-size:7.5pt;
+  color:var(--muted);
+  letter-spacing:.05em;
+  margin-bottom:14px;
+}
+.card-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:12px 22px;
+  border-top:1px solid var(--border);
+  background:#faf9f6;
+}
+.card-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--N);
+  color:#fff;
+  padding:7px 16px;
+  border-radius:6px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.04em;
+  transition:background .15s;
+}
+.card:hover .card-btn{
+  background:#2a3d5e;
+}
+.card-btn-icon{
   font-size:11px;
-  color:#888;
-  line-height:1.5;
 }
-.card-arrow{
-  font-size:18px;
-  color:var(--G);
-  flex-shrink:0;
+.card-url{
+  font-size:7pt;
+  color:var(--muted);
+  font-family:'DM Mono',monospace;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:160px;
 }
 
-/* 空枠（準備中） */
-.card.pending{
-  border-left-color:#ddd;
-  opacity:.55;
-  cursor:default;
+/* ── COPY TOAST ── */
+.copy-btn{
+  background:none;
+  border:1px solid var(--border);
+  color:var(--muted);
+  padding:5px 10px;
+  border-radius:5px;
+  font-size:9px;
+  cursor:pointer;
+  font-family:'Noto Sans JP',sans-serif;
+  font-weight:700;
+  transition:all .15s;
+}
+.copy-btn:hover{
+  background:var(--CR);
+  border-color:var(--G);
+  color:var(--G);
+}
+.toast{
+  position:fixed;
+  bottom:32px;
+  left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:var(--N);
+  color:#fff;
+  padding:10px 24px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:700;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+  transition:transform .3s ease;
+  z-index:999;
   pointer-events:none;
 }
-.card.pending .card-num{color:#bbb;}
-.card.pending .card-name{color:#aaa;}
-.card.pending .card-arrow{color:#ccc;}
-.badge-soon{
-  font-size:9px;
-  background:#f0ece3;
-  color:#aaa;
-  padding:1px 6px;
-  border-radius:4px;
-  margin-left:6px;
-  vertical-align:middle;
-  font-family:'DM Mono',monospace;
-  letter-spacing:.05em;
+.toast.show{
+  transform:translateX(-50%) translateY(0);
 }
 
-/* フッター */
-.footer{
-  margin-top:40px;
+/* ── FOOTER ── */
+footer{
+  background:var(--N);
+  color:rgba(255,255,255,.4);
   text-align:center;
-  font-size:11px;
-  color:#aaa;
+  padding:24px;
+  font-size:8pt;
   letter-spacing:.06em;
 }
-.footer strong{
-  color:var(--G);
-  font-family:'DM Mono',monospace;
-}
+footer strong{color:var(--G);}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="header-brand">RENOBEST</div>
-  <div class="header-title">提案資料 2026年6月</div>
-  <div class="header-sub">お客様向け物件一覧</div>
-  <div class="divider"></div>
+<header>
+  <div>
+    <div class="logo">RENOBEST</div>
+    <div class="logo-sub">PROPOSAL LIBRARY</div>
+  </div>
+  <div class="header-badge">✦ 社内限定</div>
+</header>
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Premium Residence Proposals</div>
+    <div class="hero-title">提案資料 一覧</div>
+    <div class="hero-desc">各物件の提案資料（顧客用HTML）へのリンク集です。<br>URLをコピーしてお客様にご共有ください。</div>
+    <div class="hero-stats">
+      <div class="h-stat">
+        <div class="h-stat-val">10</div>
+        <div class="h-stat-lbl">PROPERTIES</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-val">4</div>
+        <div class="h-stat-lbl">LANGUAGES</div>
+      </div>
+      <div class="h-stat">
+        <div class="h-stat-val">2026</div>
+        <div class="h-stat-lbl">UPDATED</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="card-list">
-
-  <!-- 物件1：公開済み -->
-  <a class="card" href="gest_branz_shibuya_sakuragaoka.html">
-    <div class="card-num">01</div>
-    <div class="card-body">
-      <div class="card-name">ブランズ渋谷桜丘</div>
-      <div class="card-detail">渋谷区桜丘町3-2 ／ 1LDK+SIC ／ 60.95㎡ ／ 20F</div>
-    </div>
-    <div class="card-arrow">›</div>
-  </a>
-
-  <!-- 物件2〜10：準備中（後から差し替え） -->
-  <div class="card pending">
-    <div class="card-num">02</div>
-    <div class="card-body">
-      <div class="card-name">準備中<span class="badge-soon">COMING SOON</span></div>
-      <div class="card-detail">近日公開予定</div>
-    </div>
-    <div class="card-arrow">›</div>
+<main>
+  <div class="section-header">
+    <div class="section-title">物件一覧</div>
+    <div class="section-line"></div>
+    <div class="section-count">10 件</div>
   </div>
 
-  <div class="card pending">
-    <div class="card-num">03</div>
-    <div class="card-body">
-      <div class="card-name">準備中<span class="badge-soon">COMING SOON</span></div>
-      <div class="card-detail">近日公開予定</div>
-    </div>
-    <div class="card-arrow">›</div>
+  <div class="grid">
+
+    <a class="card" href="gest_branz_shibuya_sakuragaoka.html" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-badge">渋谷区・桜丘</div>
+        <div class="card-name">ブランズ渋谷桜丘</div>
+        <div class="card-name-en">Branz Shibuya Sakuragaoka</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn"><span class="card-btn-icon">↗</span>提案資料を開く</span>
+        <button class="copy-btn" onclick="copyUrl(event,'https://renobest0701-rgb.github.io/renobest-proposals/gest_branz_shibuya_sakuragaoka.html')">URLコピー</button>
+      </div>
+    </a>
+
+    <a class="card" href="gest_brillia_tower_yoyogi_customer.html" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-badge">渋谷区・代々木</div>
+        <div class="card-name">プリリアタワー代々木公園クラッシィ</div>
+        <div class="card-name-en">Brillia Tower Yoyogi Classy</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn"><span class="card-btn-icon">↗</span>提案資料を開く</span>
+        <button class="copy-btn" onclick="copyUrl(event,'https://renobest0701-rgb.github.io/renobest-proposals/gest_brillia_tower_yoyogi_customer.html')">URLコピー</button>
+      </div>
+    </a>
+
+    <a class="card" href="gest_crescent_shibuya_shinsen_customer.html" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-badge">渋谷区・神泉</div>
+        <div class="card-name">クレッセント渋谷神泉</div>
+        <div class="card-name-en">Crescent Shibuya Shinsen</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn"><span class="card-btn-icon">↗</span>提案資料を開く</span>
+        <button class="copy-btn" onclick="copyUrl(event,'https://renobest0701-rgb.github.io/renobest-proposals/gest_crescent_shibuya_shinsen_customer.html')">URLコピー</button>
+      </div>
+    </a>
+
+    <a class="card" href="gest_diana_court_uehara_customer.html" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-badge">渋谷区・上原</div>
+        <div class="card-name">ディアナコート上原</div>
+        <div class="card-name-en">Diana Court Uehara</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn"><span class="card-btn-icon">↗</span>提案資料を開く</span>
+        <button class="copy-btn" onclick="copyUrl(event,'https://renobest0701-rgb.github.io/renobest-proposals/gest_diana_court_uehara_customer.html')">URLコピー</button>
+      </div>
+    </a>
+
+    <a class="card" href="gest_gran_livio_ebisu_customer.html" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-badge">渋谷区・恵比寿</div>
+        <div class="card-name">グランリビオ恵比寿</div>
+        <div class="card-name-en">Gran Livio Ebisu</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn"><span class="card-btn-icon">↗</span>提案資料を開く</span>
+        <button class="copy-btn" onclick="copyUrl(event,'https://renobest0701-rgb.github.io/renobest-proposals/gest_gran_livio_ebisu_customer.html')">URLコピー</button>
+      </div>
+    </a>
+
+    <a class="card" href="gest_grand_hills_ebisu.html" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-badge">渋谷区・恵比寿</div>
+        <div class="card-name">グランドヒルズ恵比寿</div>
+        <div class="card-name-en">Grand Hills Ebisu</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn"><span class="card-btn-icon">↗</span>提案資料を開く</span>
+        <button class="copy-btn" onclick="copyUrl(event,'https://renobest0701-rgb.github.io/renobest-proposals/gest_grand_hills_ebisu.html')">URLコピー</button>
+      </div>
+    </a>
+
+    <a class="card" href="gest_grand_maison_ebisu_customer.html" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-badge">渋谷区・恵比寿</div>
+        <div class="card-name">グランドメゾン恵比寿の杜</div>
+        <div class="card-name-en">Grand Maison Ebisu no Mori</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn"><span class="card-btn-icon">↗</span>提案資料を開く</span>
+        <button class="copy-btn" onclick="copyUrl(event,'https://renobest0701-rgb.github.io/renobest-proposals/gest_grand_maison_ebisu_customer.html')">URLコピー</button>
+      </div>
+    </a>
+
+    <a class="card" href="gest_grand_maison_oyamacho.html" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-badge">渋谷区・大山町</div>
+        <div class="card-name">グランドメゾン渋谷大山町</div>
+        <div class="card-name-en">Grand Maison Shibuya Oyamacho</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn"><span class="card-btn-icon">↗</span>提案資料を開く</span>
+        <button class="copy-btn" onclick="copyUrl(event,'https://renobest0701-rgb.github.io/renobest-proposals/gest_grand_maison_oyamacho.html')">URLコピー</button>
+      </div>
+    </a>
+
+    <a class="card" href="gest_minamidaira_house.html" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-badge">渋谷区・南平台</div>
+        <div class="card-name">南平台ハウス</div>
+        <div class="card-name-en">Minamidaira House</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn"><span class="card-btn-icon">↗</span>提案資料を開く</span>
+        <button class="copy-btn" onclick="copyUrl(event,'https://renobest0701-rgb.github.io/renobest-proposals/gest_minamidaira_house.html')">URLコピー</button>
+      </div>
+    </a>
+
+    <a class="card" href="gest_parkct_oyamacho_yutei_customer.html" target="_blank">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-badge">渋谷区・大山町</div>
+        <div class="card-name">パークコート渋谷大山町ザブラネ悠邸</div>
+        <div class="card-name-en">Park Court Shibuya Oyamacho Yutei</div>
+      </div>
+      <div class="card-footer">
+        <span class="card-btn"><span class="card-btn-icon">↗</span>提案資料を開く</span>
+        <button class="copy-btn" onclick="copyUrl(event,'https://renobest0701-rgb.github.io/renobest-proposals/gest_parkct_oyamacho_yutei_customer.html')">URLコピー</button>
+      </div>
+    </a>
+
   </div>
+</main>
 
-  <div class="card pending">
-    <div class="card-num">04</div>
-    <div class="card-body">
-      <div class="card-name">準備中<span class="badge-soon">COMING SOON</span></div>
-      <div class="card-detail">近日公開予定</div>
-    </div>
-    <div class="card-arrow">›</div>
-  </div>
+<footer>
+  <strong>RENOBEST</strong> &nbsp;|&nbsp; Proposal Library &nbsp;|&nbsp; 社内限定 · 取り扱い注意
+</footer>
 
-  <div class="card pending">
-    <div class="card-num">05</div>
-    <div class="card-body">
-      <div class="card-name">準備中<span class="badge-soon">COMING SOON</span></div>
-      <div class="card-detail">近日公開予定</div>
-    </div>
-    <div class="card-arrow">›</div>
-  </div>
+<div class="toast" id="toast">✓ URLをコピーしました</div>
 
-  <div class="card pending">
-    <div class="card-num">06</div>
-    <div class="card-body">
-      <div class="card-name">準備中<span class="badge-soon">COMING SOON</span></div>
-      <div class="card-detail">近日公開予定</div>
-    </div>
-    <div class="card-arrow">›</div>
-  </div>
-
-  <div class="card pending">
-    <div class="card-num">07</div>
-    <div class="card-body">
-      <div class="card-name">準備中<span class="badge-soon">COMING SOON</span></div>
-      <div class="card-detail">近日公開予定</div>
-    </div>
-    <div class="card-arrow">›</div>
-  </div>
-
-  <div class="card pending">
-    <div class="card-num">08</div>
-    <div class="card-body">
-      <div class="card-name">準備中<span class="badge-soon">COMING SOON</span></div>
-      <div class="card-detail">近日公開予定</div>
-    </div>
-    <div class="card-arrow">›</div>
-  </div>
-
-  <div class="card pending">
-    <div class="card-num">09</div>
-    <div class="card-body">
-      <div class="card-name">準備中<span class="badge-soon">COMING SOON</span></div>
-      <div class="card-detail">近日公開予定</div>
-    </div>
-    <div class="card-arrow">›</div>
-  </div>
-
-  <div class="card pending">
-    <div class="card-num">10</div>
-    <div class="card-body">
-      <div class="card-name">準備中<span class="badge-soon">COMING SOON</span></div>
-      <div class="card-detail">近日公開予定</div>
-    </div>
-    <div class="card-arrow">›</div>
-  </div>
-
-</div>
-
-<div class="footer">
-  <strong>RENOBEST</strong> &nbsp;｜&nbsp; 東京都千代田区飯田橋4丁目5番11号
-</div>
-
+<script>
+function copyUrl(e, url) {
+  e.preventDefault();
+  e.stopPropagation();
+  navigator.clipboard.writeText(url).then(() => {
+    const t = document.getElementById('toast');
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2000);
+  });
+}
+</script>
 </body>
 </html>
